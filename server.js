@@ -15,13 +15,17 @@ app.set("view engine", "ejs");
 
 //! Routes
 //* index route
-app.get("/", (req, res) => {
-  res.render("index.ejs", { data: Pokemon });
+app.get("/pokemon/", (req, res) => {
+  const data = Pokemon;
+  res.render("index.ejs", { data });
 });
 
 //* show route
-app.get("/:id", (req, res) => {
-  res.render("show.ejs", { data: Pokemon[req.params.id] });
+app.get("/pokemon/:id", (req, res) => {
+  const pos = req.params.id;
+  const item = Pokemon.filter((pokemon) => pokemon.id === pos)[0];
+  console.log(item);
+  res.render("show.ejs", { item });
 });
 // app.get("/fruits/", (req, res) => {
 //   res.render("index.ejs", { fruits });
