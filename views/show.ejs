@@ -18,24 +18,23 @@
         font-family: 'Quicksand', sans-serif;
         padding: 1rem;
         background-color: #ee1515;
-        }
-
-      .container {
+      }
+      section {
         position: absolute;
-        
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        
+        }
+
+      .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
       }
 
-      h1 {
-        color: #222224;
-      }
-      
       img {
+        margin: 2rem;
         opacity: 1;
         display: block;
         width: 100%;
@@ -68,31 +67,41 @@
         font-size: 16px;
         padding: 16px 32px;
       }
+      h1, a {
+        color:#f0f0f0;
+      }
+
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1><%=pokemon.name%> #<%=pokemon.id%> </h1>
-      <img src="<%=pokemon.img%>" alt="Avatar" />
-      <div class="middle">
-        <div class="text">
-          <h3>Type:          
-            <% pokemon.type.forEach( type => {%>
-             <span><%=type%></span>
-            <%})%>
-            </h3>
-            <p>hp: <%=pokemon.stats.hp%></p> 
-            <p>attack: <%=pokemon.stats.attack%></p>
-            <p>defense: <%=pokemon.stats.defense%></p>
-            <p>spattack: <%=pokemon.stats.spattack%></p>
-            <p>spdefense: <%=pokemon.stats.spdefense%></p>
-            <p>speed: <%=pokemon.stats.speed%></p>                         
+    <section>
+      <nav>
+        <h1><%=pokemon.name%> #<%=pokemon.id%> </h1>
+        <a href="/pokemon/<%=pos%>/edit">Edit</a>
+        <a href="/pokemon/">Back</a>
+      </nav>
+      <div class="container">
+        <img src="<%=pokemon.img%>" alt="Avatar" />
+        <div class="middle">
+          <div class="text">
+            <h3>Type:          
+              <% pokemon.type.forEach( type => {%>
+               <span><%=type%></span>
+              <%})%>
+              </h3>
+              <p>hp: <%=pokemon.stats.hp%></p> 
+              <p>attack: <%=pokemon.stats.attack%></p>
+              <p>defense: <%=pokemon.stats.defense%></p>
+              <p>spattack: <%=pokemon.stats.spattack%></p>
+              <p>spdefense: <%=pokemon.stats.spdefense%></p>
+              <p>speed: <%=pokemon.stats.speed%></p>                         
+          </div>
         </div>
-      </div>
-      
-      <form action="/pokemon/<%=pos%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE" />
-      </form>
-    </div>  
+        <form action="/pokemon/<%=pos%>?_method=DELETE" method="POST">
+          <input type="submit" value="DELETE" />
+        </form>
+      </div>  
+
+    </section>
   </body>
 </html>
