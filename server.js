@@ -29,7 +29,7 @@ app.get("/pokemon/new", (req, res) => {
 app.get("/pokemon/:id", (req, res) => {
   const pos = req.params.id;
   const pokemon = Pokemon.filter((pokemon) => pokemon.id === pos)[0];
-  res.render("show.ejs", { pokemon });
+  res.render("show.ejs", { pokemon, pos });
 });
 
 //*post route
@@ -54,17 +54,12 @@ app.post("/pokemon/", (req, res) => {
   res.redirect("/pokemon");
 });
 
-// //*delete route
-// app.get("/fruits/:id", (req, res) => {
-//   const { id } = req.params;
-//   const fruit = fruits[id];
-//   res.render("show.ejs", { fruit, id });
-// });
-
-// app.delete("/fruits/:index", (req, res) => {
-//   fruits.splice(req.params.index, 1);
-//   res.redirect("/fruits");
-// });
+//*delete route
+app.delete("/pokemon/:index", (req, res) => {
+  const toRemove = Pokemon.findIndex((e) => e.id === req.params.index);
+  Pokemon.splice(toRemove, 1);
+  res.redirect("/pokemon");
+});
 
 // app.put("/fruits/:id", (req, res) => {
 //   const { id } = req.params;
