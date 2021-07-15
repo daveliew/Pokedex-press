@@ -6,11 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon Show Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+
+      @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+      body{
+        margin: 0 auto;
+        height: 100vh;
+        text-align: center;
+        max-width: 100vw;
+        font-size: 16;
+        font-family: 'Quicksand', sans-serif;
+        padding: 1rem;
+        background-color: #ee1515;
+        }
+
+      .container {
+        position: absolute;
+        
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      h1 {
+        color: #222224;
+      }
+      
+      img {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+      }
+      
+      .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      
+      .container:hover img {
+        opacity: 0.3;
+      }
+      
+      .container:hover .middle {
+        opacity: 1;
+      }
+      
+      .text {
+        background-color: #222224;
+        color:#f0f0f0;
+        font-size: 16px;
+        padding: 16px 32px;
+      }
+    </style>
   </head>
   <body>
-    <h1>SHOW</h1>
-    <h2><%=item.name%></h2>
-    
-
+    <div class="container">
+      <h1><%=pokemon.name%> #<%=pokemon.id%> </h1>
+      <img src="<%=pokemon.img%>" alt="Avatar" />
+      <div class="middle">
+        <div class="text">
+          <h3>Type:          
+            <% pokemon.type.forEach( type => {%>
+             <span><%=type%></span>
+            <%})%>
+            </h3>
+            <p>hp: <%=pokemon.stats.hp%></p> 
+            <p>attack: <%=pokemon.stats.attack%></p>
+            <p>defense: <%=pokemon.stats.defense%></p>
+            <p>spattack: <%=pokemon.stats.spattack%></p>
+            <p>spdefense: <%=pokemon.stats.spdefense%></p>
+            <p>speed: <%=pokemon.stats.speed%></p>             
+            
+          </ul>
+        </div>
+      </div>
+    </div>  
   </body>
 </html>

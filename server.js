@@ -23,13 +23,9 @@ app.get("/pokemon/", (req, res) => {
 //* show route
 app.get("/pokemon/:id", (req, res) => {
   const pos = req.params.id;
-  const item = Pokemon.filter((pokemon) => pokemon.id === pos)[0];
-  console.log(item);
-  res.render("show.ejs", { item });
+  const pokemon = Pokemon.filter((pokemon) => pokemon.id === pos)[0];
+  res.render("show.ejs", { pokemon });
 });
-// app.get("/fruits/", (req, res) => {
-//   res.render("index.ejs", { fruits });
-// });
 
 // app.get("/fruits/new", (req, res) => {
 //   res.render("new.ejs");
