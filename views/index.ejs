@@ -55,11 +55,17 @@
         p {
           color: #222224;
         }
+        a {
+          color: #222224;
+        }
 
       </style>
     </head>
     <body>
+      <nav>
       <h1>Pokedex</h1>
+        <a href="/pokemon/new">Add a pokemon</a>
+      </nav>
       <div class="container">
         <% data.forEach((pokemon, index) => {%>
         <div class="card">

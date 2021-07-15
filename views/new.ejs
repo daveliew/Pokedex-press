@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon New Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+      
+        body {
+            margin: 0 auto;
+            height: 100vh;
+            max-width: 100vw;
+            font-size: 16;
+            font-family: 'Quicksand', sans-serif;
+            padding: 1rem;
+            background-color: #ee1515;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            margin-right: 5vw;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        .button {
+            background-color: #f0f0f0 ;
+            color: #222224;
+        }
+
+    </style>
+  </head>
+  <body>
+      <div class="container">
+        <h1>Add a Pokemon</h1>
+        <form action="/pokemon/" method="POST">
+          <input type="text" name="name" id="name" placeholder="name: pokebond"/>
+          <input type="text" name="img" id="img" value="https://source.unsplash.com/random/200x200?sig=incrementingIdentifier"/>
+          <input type="text" name="type" id="type" placeholder="type: shaken, not stirred" multiple/>
+          <input type="text" name="hp" id="hp" placeholder="hp: 999"/>
+          <input type="text" name="attack" id="attack" placeholder="attack: 999"/>
+          <input type="text" name="defense" id="defense" placeholder="defense: 999"/>
+          <input type="text" name="spattack" id="spattack" placeholder="spattack: 999"/>
+          <input type="text" name="spdefense" id="spdefense" placeholder="spdefense: 999"/>
+          <input type="text" name="speed" id="speed" placeholder="speed: 999"/>
+
+          <input type="submit" value="Create Pokemon" class="button"/>
+        </form>
+      </div>
+
+  </body>
+</html>

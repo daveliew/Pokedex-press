@@ -20,6 +20,11 @@ app.get("/pokemon/", (req, res) => {
   res.render("index.ejs", { data });
 });
 
+//* new route
+app.get("/pokemon/new", (req, res) => {
+  res.render("new.ejs");
+});
+
 //* show route
 app.get("/pokemon/:id", (req, res) => {
   const pos = req.params.id;
@@ -27,19 +32,27 @@ app.get("/pokemon/:id", (req, res) => {
   res.render("show.ejs", { pokemon });
 });
 
-// app.get("/fruits/new", (req, res) => {
-//   res.render("new.ejs");
-// });
-
 //*post route
 
-// app.post("/fruits", (req, res) => {
-//   if (req.body.readyToEat === "on") {
-//     req.body.readyToEat = true;
-//   }
-//   fruits.push(req.body);
-//   res.redirect("/fruits");
-// });
+app.post("/pokemon/", (req, res) => {
+  const newPokemon = {
+    name: req.body.name,
+    id: (parseInt(Pokemon[Pokemon.length - 1].id) + 1).toString(),
+    img: req.body.img,
+    type: req.body.type.split(","),
+    stats: {
+      hp: req.body.hp,
+      attack: req.body.attack,
+      defense: req.body.defense,
+      spattack: req.body.spattack,
+      spdefense: req.body.spdefense,
+      speed: req.body.speed,
+    },
+  };
+  console.log(newPokemon);
+  Pokemon.unshift(newPokemon);
+  res.redirect("/pokemon");
+});
 
 // //*delete route
 // app.get("/fruits/:id", (req, res) => {
